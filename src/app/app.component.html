@@ -1,0 +1,8 @@
+Control padre temperatura: {{ this.temperature }}
+<app-control-temperature
+  [temperature]="this.temperature"
+  (temperatureOutput)="onCambioTemperaturaOutput($event)"
+></app-control-temperature>
+<app-display-temperature
+  [temperature]="this.temperature"
+></app-display-temperature>

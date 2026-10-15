@@ -1,0 +1,25 @@
+import { Component, input, OnChanges, SimpleChanges } from '@angular/core';
+
+@Component({
+  selector: 'app-display-temperature',
+  imports: [],
+  templateUrl: './display-temperature.component.html',
+  styleUrl: './display-temperature.component.css',
+  host: {
+    '[class.warning]':'alarm'
+  }
+})
+export class DisplayTemperatureComponent implements OnChanges {
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['temperature']) {
+      this.alarm = (changes['temperature'].currentValue>this.umbral)
+    }
+  }
+
+  //inputs/outputs
+  temperature = input.required<number>();
+
+  //propiedades
+  umbral = 25;
+  alarm = false;
+}
